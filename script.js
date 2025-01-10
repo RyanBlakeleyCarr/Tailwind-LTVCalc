@@ -26,20 +26,20 @@ function calculateMetrics() {
     const subsGained = parseFloat(document.getElementById('subsGained').value) || 0;
     const subsChurned = parseFloat(document.getElementById('subsChurned').value) || 0;
 
-    // Calculate average number of subscribers during period
-    const endingSubs = startingSubs + subsGained - subsChurned;
-    const avgSubs = (startingSubs + endingSubs) / 2;
+    // Calculate average subscriber base during the period
+    // Starting subs + half of gained subs (assuming linear growth)
+    const avgSubs = startingSubs + (subsGained / 2);
 
     // Calculate Monthly Revenue per Subscriber
     const monthlyRPS = avgSubs > 0 ? (revenue / months) / avgSubs : 0;
 
-    // Calculate Monthly Rates
-    const monthlyGains = subsGained / months;
-    const monthlyLosses = subsChurned / months;
+    // Calculate Monthly Churn Rate and Lifespan
+    const monthlyChurn = subsChurned / months;
+    const churnRate = monthlyChurn / avgSubs;
     
-    // Calculate Subscriber Lifespan
-    const netGrowth = monthlyGains - monthlyLosses;
-    const sl = netGrowth > 0 ? endingSubs / netGrowth : 0;
+    // If there's no churn, return 999 months as "infinite" lifespan
+    // Otherwise calculate 1/churnRate for the lifespan
+    const sl = churnRate > 0 ? 1 / churnRate : 999;
 
     // Calculate Lifetime Value (LTV)
     const ltv = monthlyRPS * sl;
@@ -57,6 +57,7 @@ function formatCurrency(value) {
 
 function formatMonths(value) {
     if (isNaN(value) || !isFinite(value)) return '0 months';
+    if (value >= 999) return '∞ months';
     return Math.round(value) + ' months';
 }
 
