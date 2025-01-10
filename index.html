@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newsletter LTV Calculator</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&display=swap">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p class="brand">Tailwind's</p>
+            <h1>Newsletter LTV Calculator</h1>
+        </div>
+        
+        <div class="calculator">
+            <div class="input-group">
+                <div class="input-field">
+                    <label for="revenue" class="tooltip">
+                        Total Revenue ($)
+                        <span class="tooltiptext">The total revenue earned during your analysis period</span>
+                    </label>
+                    <input type="text" id="revenue" placeholder="8000">
+                </div>
+                
+                <div class="input-field">
+                    <label for="months" class="tooltip">
+                        Analysis Period (months)
+                        <span class="tooltiptext">Number of months this data covers</span>
+                    </label>
+                    <input type="text" id="months" placeholder="6">
+                </div>
+                
+                <div class="input-field">
+                    <label for="totalSubs" class="tooltip">
+                        Total Current Subscribers
+                        <span class="tooltiptext">Your current total number of subscribers</span>
+                    </label>
+                    <input type="text" id="totalSubs" placeholder="5000">
+                </div>
+                
+                <div class="input-field">
+                    <label for="periodSubs" class="tooltip">
+                        Subscribers During Period
+                        <span class="tooltiptext">Average number of subscribers during your analysis period</span>
+                    </label>
+                    <input type="text" id="periodSubs" placeholder="5000">
+                </div>
+                
+                <div class="input-field">
+                    <label for="subsGained" class="tooltip">
+                        Total Subscribers Gained
+                        <span class="tooltiptext">Total number of new subscribers acquired during your analysis period</span>
+                    </label>
+                    <input type="text" id="subsGained" placeholder="1146">
+                </div>
+                
+                <div class="input-field">
+                    <label for="subsChurned" class="tooltip">
+                        Total Subscribers Churned
+                        <span class="tooltiptext">Total number of subscribers who left during your analysis period</span>
+                    </label>
+                    <input type="text" id="subsChurned" placeholder="444">
+                </div>
+            </div>
+
+            <div class="results">
+                <div class="metric">
+                    <h3>Revenue Per Subscriber</h3>
+                    <p id="rps">$0.00</p>
+                </div>
+                
+                <div class="metric">
+                    <h3>Subscriber Lifespan</h3>
+                    <p id="sl">0 months</p>
+                </div>
+                
+                <div class="metric">
+                    <h3>Lifetime Value (LTV)</h3>
+                    <p id="ltv">$0.00</p>
+                </div>
+            </div>
+
+            <div class="projections">
+                <h2>Revenue Projections</h2>
+                <p>At 50,000 subscribers: <span id="proj50k">$0.00</span></p>
+                <p>At 100,000 subscribers: <span id="proj100k">$0.00</span></p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
