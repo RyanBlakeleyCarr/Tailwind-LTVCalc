@@ -22,34 +22,32 @@ function calculateMetrics() {
     // Get input values and convert to numbers
     const revenue = parseFloat(document.getElementById('revenue').value) || 0;
     const months = Math.max(1, parseFloat(document.getElementById('months').value) || 1);
-    const totalSubs = parseFloat(document.getElementById('totalSubs').value) || 0;
-    const periodSubs = parseFloat(document.getElementById('periodSubs').value) || 0;
+    const startingSubs = parseFloat(document.getElementById('startingSubs').value) || 0;
     const subsGained = parseFloat(document.getElementById('subsGained').value) || 0;
     const subsChurned = parseFloat(document.getElementById('subsChurned').value) || 0;
 
-    // Calculate Revenue Per Subscriber (RPS)
-    const rps = periodSubs > 0 ? revenue / (periodSubs * months) : 0;
+    // Calculate average number of subscribers during period
+    const endingSubs = startingSubs + subsGained - subsChurned;
+    const avgSubs = (startingSubs + endingSubs) / 2;
 
-    // Calculate Subscriber Lifespan (SL)
-    // Convert total gains/losses to monthly rate for lifespan calculation
+    // Calculate Monthly Revenue per Subscriber
+    const monthlyRPS = avgSubs > 0 ? (revenue / months) / avgSubs : 0;
+
+    // Calculate Monthly Rates
     const monthlyGains = subsGained / months;
     const monthlyLosses = subsChurned / months;
+    
+    // Calculate Subscriber Lifespan
     const netGrowth = monthlyGains - monthlyLosses;
-    const sl = netGrowth > 0 ? totalSubs / netGrowth : 0;
+    const sl = netGrowth > 0 ? endingSubs / netGrowth : 0;
 
     // Calculate Lifetime Value (LTV)
-    const ltv = rps * sl;
-
-    // Calculate projections
-    const proj50k = 50000 * rps;
-    const proj100k = 100000 * rps;
+    const ltv = monthlyRPS * sl;
 
     // Update display
-    document.getElementById('rps').textContent = formatCurrency(rps);
+    document.getElementById('rps').textContent = formatCurrency(monthlyRPS);
     document.getElementById('sl').textContent = formatMonths(sl);
     document.getElementById('ltv').textContent = formatCurrency(ltv);
-    document.getElementById('proj50k').textContent = formatCurrency(proj50k);
-    document.getElementById('proj100k').textContent = formatCurrency(proj100k);
 }
 
 function formatCurrency(value) {
