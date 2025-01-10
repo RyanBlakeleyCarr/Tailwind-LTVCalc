@@ -8,7 +8,7 @@ body {
     font-family: 'Merriweather', serif;
     line-height: 1.6;
     color: #1B243F;
-    background-color: #ffffff;
+    background-color: #152642;
 }
 
 .container {
@@ -25,14 +25,14 @@ body {
 .brand {
     font-family: 'Merriweather', serif;
     font-style: italic;
-    color: #4B5563; /* lighter shade of the navy color */
+    color: rgba(255, 255, 255, 0.9); /* slightly transparent white */
     font-size: 1.1rem;
     margin-bottom: 0.5rem;
 }
 
 h1 {
     text-align: center;
-    color: #1B243F;
+    color: #ffffff;
     font-size: 2.5rem;
     font-weight: 700;
 }
@@ -41,7 +41,7 @@ h1 {
     background: #ffffff;
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
 }
 
 .input-group {
