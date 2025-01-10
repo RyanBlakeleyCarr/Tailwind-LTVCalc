@@ -104,28 +104,7 @@ input:focus {
 }
 
 .projections {
-    text-align: center;
-    background-color: #F8FAFC;
-    padding: 2rem;
-    border-radius: 8px;
-}
-
-.projections h2 {
-    font-size: 1.25rem;
-    margin-bottom: 1.5rem;
-    color: #1B243F;
-    font-weight: 700;
-}
-
-.projections p {
-    margin-bottom: 1rem;
-    color: #4B5563;
-    font-size: 1.1rem;
-}
-
-.projections span {
-    font-weight: 600;
-    color: #1B243F;
+    display: none;
 }
 
 /* Add responsive adjustments */
@@ -157,6 +136,10 @@ input:focus {
     .results {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .other-fields {
+        grid-template-columns: 1fr;
     }
 } 
 
@@ -214,4 +197,31 @@ input:focus {
 /* Ensure tooltip container doesn't affect layout */
 .input-field {
     position: relative;
+} 
+
+.cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.cta-text {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    color: #4B5563;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.cta-link {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    color: #1B243F;
+    font-size: 0.95rem;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+    display: inline-block;
+}
+
+.cta-link:hover {
+    opacity: 0.7;
 } 
